@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,17 +20,21 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-//board
-Route::post('/store-board', 'BoardController@store')->name('store.board');
-Route::patch('/update-board/{board}', 'BoardController@update')->name('update.board');
-Route::delete('/delete-board/{board}', 'BoardController@delete')->name('delete.board');;
+    //board
+    Route::post('/store-board', 'BoardController@store')->name('store.board');
+    Route::patch('/update-board/{board}', 'BoardController@update')->name('update.board');
+    Route::delete('/delete-board/{board}', 'BoardController@delete')->name('delete.board');;
 
-//task
+    //task
 
-Route::get('/task','TaskController@index')->name('task');
-Route::post('/store-task','TaskController@store')->name('store.task');
-Route::patch('/update-task/{task}','TaskController@update')->name('task.update');
-Route::delete('/delete/{task}','TaskController@delete')->name('delete.task');
+    Route::get('/task','TaskController@index')->name('task');
+    Route::post('/store-task','TaskController@store')->name('store.task');
+    Route::patch('/update-task/{task}','TaskController@update')->name('task.update');
+    Route::delete('/delete/{task}','TaskController@delete')->name('delete.task');
+
+    //Board frontend
+    Route::get('/board', 'BoardController@show')->name('board.show');
+    Route::put('/tasks/sync', 'TaskController@sync')->name('tasks.sync');
 });

@@ -60,9 +60,7 @@
 										<td>{{$t->title}}</td>
 										<td>{{$t->description}}</td>
 										<td>
-											@foreach($t->status as $s)
-											<p>{{$s->slug}}</p>
-											@endforeach
+											<p>{{$t->status->title}}</p>
 										</td>
 										<td>
 											<a href="" class="btn btn-success btn-sm m-2" data-toggle="modal" data-target="#exampleModal{{$t->id}}">Edit</a>

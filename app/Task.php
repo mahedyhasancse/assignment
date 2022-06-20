@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     protected $fillable = [
-        'title', 'board_id', 'description','user_id'
+        'title','description', 'order', 'board_id', 'user_id', 'status_id'
+    ];
+    protected $appends = [
+        'color'
     ];
     public function board()
     {
@@ -15,10 +18,14 @@ class Task extends Model
     }
     public function status()
     {
-        return $this->hasMany(Status::class, 'task_id');
+        return $this->belongsTo(Status::class, 'status_id');
     }
     public function user(){
         return   $this->belongsTo(User::class, 'user_id');
 
+    }
+
+    public function getColorAttribute(){
+        return "background-color: ".$this->board()->first()->color.';';
     }
 }

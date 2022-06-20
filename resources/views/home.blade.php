@@ -60,9 +60,6 @@
 											<td>{{ $board->color }}</td>
 											<td>
 												<a class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{$board->id}}">Edit</a>
-
-
-
 												<!-- Modal -->
 												<div class="modal fade" id="exampleModal{{$board->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 													<div class="modal-dialog" role="document">
@@ -123,7 +120,7 @@
 		</div>
 		<div class="col-md-4">
 			<p><a href="{{route('task')}}" class="btn btn-primary mt-4">Add Task</a></p>
-			<p><a href="" class="btn btn-success">Catalog view</a></p>
+			<p><a href="{{route('board.show')}}" class="btn btn-success">Catalog view</a></p>
 		</div>
 	</div>
 </div>
